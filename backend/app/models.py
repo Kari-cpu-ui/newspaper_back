@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, Enum, ForeignKey, TIMESTAMP
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 from .database import Base
 
 # -------------------- USUARIOS --------------------
@@ -11,7 +12,7 @@ class User(Base):
     email = Column(String(100), unique=True, nullable=False)
     password_hash = Column(String(255), nullable=False)
     role = Column(Enum('redactor', 'editor'), nullable=False)
-    created_at = Column(TIMESTAMP)
+    created_at = Column(TIMESTAMP, server_default=func.now()) # Fecha automatica al crear el usuario
 
     # Relaciones
     articles_authored = relationship("Article", back_populates="author", foreign_keys='Article.author_id')
@@ -30,8 +31,8 @@ class Article(Base):
     importance = Column(Integer, default=0)
     author_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     editor_id = Column(Integer, ForeignKey("users.id"))
-    created_at = Column(TIMESTAMP)
-    updated_at = Column(TIMESTAMP)
+    created_at = Column(TIMESTAMP, server_default=func.now()) # Fecha automatica al crear el artículo
+    updated_at = Column(TIMESTAMP,server_default=func.now(), onupdate=func.now()) # Fecha automatica al actualizar el artículo
 
     # Relaciones entre tablas
     author = relationship("User", back_populates="articles_authored", foreign_keys=[author_id])
@@ -44,4 +45,5 @@ class Subscription(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String(100), unique=True, nullable=False)
-    created_at = Column(TIMESTAMP)
+    created_at = Column(TIMESTAMP, server_default=func.now())
+    updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
