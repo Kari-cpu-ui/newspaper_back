@@ -16,4 +16,5 @@ __pycache__/
 .env
 .env.*
 ../frontend/
-
+app_backup/
+app_backup/
