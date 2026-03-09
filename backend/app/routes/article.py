@@ -77,3 +77,18 @@ def patch_article(article_id: int, article_data: ArticleUpdate, db: Session = De
 @router.get("/debug")
 def debug_articles(db: Session = Depends(get_db)):
     return db.query(Article).all()
+
+# delete article
+
+@router.delete("/{article_id}")
+def delete_article(article_id: int, db: Session = Depends(get_db)):
+    # Buscar el artículo
+    article = db.query(Article).filter(Article.id == article_id).first()
+    if not article:
+        raise HTTPException(status_code=404, detail="Artículo no encontrado")
+    
+    # Eliminar
+    db.delete(article)
+    db.commit()
+    
+    return {"message": f"Artículo {article_id} eliminado"}
