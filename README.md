@@ -2,54 +2,39 @@
 
 🚧 Proyecto en desarrollo
 
-Sistema de gestión de contenidos (CMS) para un periódico digital desarrollado con Python utilizando el framework FastAPI.
-Permite crear, editar y publicar artículos dentro de una plataforma de administración de contenido.
+Sistema de gestión de contenidos (CMS) para un periódico digital.
 
-Este proyecto forma parte de mi proceso de aprendizaje como desarrolladora backend y tiene como objetivo practicar la creación de APIs REST, gestión de bases de datos y arquitectura de proyectos en Python.
+## Backend
+- Python + FastAPI
+- SQLAlchemy
+- MySQL
+- Aiven (base de datos en la nube)
+- Git + GitFlow
 
----
+## Frontend
+- Angular
+- HTML5 / CSS / JavaScript
 
 ## Funcionalidades
-
-- Crear artículos
-- Editar artículos
-- Eliminar artículos
+- Crear, editar y eliminar artículos
 - Gestión de autores
 - Organización por secciones
 - Estados de publicación (borrador, revisión, publicado)
 
----
-
 ## Estado del proyecto
-
-Actualmente en desarrollo.
+Actualmente en desarrollo
 
 Funcionalidades en progreso:
-
-- CRUD completo de artículos
-- Gestión de usuarios/autores
 - Sistema de autenticación
-- Organización por categorías o secciones
-
----
-
-## Tecnologías y herramientas
-
-- Python
-- FastAPI
-- SQLAlchemy
-- MySQL
-- Aiven (base de datos en la nube)
-- Git
-- Git Bash
-- GitFlow (gestión de ramas)
-
----
+- Conexión frontend-backend
 
 ## Instalación
-
 1. Clonar el repositorio
+2. Crear y activar entorno virtual para backend
+3. Instalar dependencias
+4. Ejecutar servidor backend
+5. Abrir frontend con Angular
 
-```bash
-git clone <url-del-repositorio>
-cd mi-periodico
+## Documentación de la API
+- Swagger: http://127.0.0.1:8000/docs
+- ReDoc: http://127.0.0.1:8000/redoc
